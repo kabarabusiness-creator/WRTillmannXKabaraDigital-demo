@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>W R Tillmann — Schmuck, Uhren, Mode in Mömbris</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c0b0a;
+    --ink-2:#161311;
+    --ivory:#f6f1e7;
+    --ivory-2:#efe8d9;
+    --gold:#b08d57;
+    --gold-bright:#d9b98a;
+    --burgundy:#5c1a2b;
+    --burgundy-bright:#7a2438;
+    --charcoal:#211d19;
+    --smoke:#8f887c;
+    --line:rgba(176,141,87,0.28);
+    --facet: polygon(22px 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%, 0 22px);
+    --facet-sm: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--ivory);
+    color:var(--charcoal);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:16px; height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  section{position:relative;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px;
+    font-family:'Work Sans', sans-serif;
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+    border:1px solid transparent;
+    clip-path:var(--facet-sm);
+    transition:transform .35s cubic-bezier(.2,.8,.2,1), background .35s, color .35s, box-shadow .35s;
+  }
+  .btn-gold{ background:var(--gold); color:var(--ink); }
+  .btn-gold:hover{ background:var(--gold-bright); transform:translateY(-2px); box-shadow:0 12px 24px -12px rgba(176,141,87,0.6); }
+  .btn-line{ background:transparent; color:var(--ivory); border:1px solid rgba(246,241,231,0.35); }
+  .btn-line:hover{ border-color:var(--gold-bright); color:var(--gold-bright); transform:translateY(-2px); }
+  .btn-line.dark{ color:var(--ink); border-color:rgba(33,29,25,0.3); }
+  .btn-line.dark:hover{ border-color:var(--burgundy); color:var(--burgundy); }
+  .btn-burg{ background:var(--burgundy); color:var(--ivory); }
+  .btn-burg:hover{ background:var(--burgundy-bright); transform:translateY(-2px); box-shadow:0 12px 24px -12px rgba(92,26,43,0.6); }
+  .btn-small{ padding:10px 18px; font-size:0.7rem; }
+  .btn-full{ width:100%; justify-content:center; }
+
+  /* ---------- Header ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    padding:22px 0;
+    transition:background .4s, padding .4s, border-color .4s;
+    border-bottom:1px solid transparent;
+  }
+  header.solid{
+    background:rgba(12,11,10,0.92);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    border-color:var(--line);
+  }
+  header .wrap{ display:flex; align-items:center; justify-content:space-between; max-width:1280px; }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.32rem;
+    letter-spacing:0.14em;
+    color:var(--ivory);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .mark{ color:var(--gold); font-size:1.1rem; }
+  nav.primary-nav{ display:flex; gap:34px; align-items:center; }
+  nav.primary-nav a{
+    color:rgba(246,241,231,0.78);
+    font-size:0.78rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.primary-nav a:hover{ color:var(--ivory); }
+  nav.primary-nav a::after{
+    content:'◆';
+    position:absolute; left:50%; bottom:-9px; transform:translateX(-50%) scale(0);
+    font-size:5px; color:var(--gold); transition:transform .3s;
+  }
+  nav.primary-nav a:hover::after{ transform:translateX(-50%) scale(1); }
+  .header-actions{ display:flex; align-items:center; gap:20px; }
+  .cart-btn{
+    position:relative; background:none; border:none; cursor:pointer;
+    color:var(--ivory); display:flex; align-items:center;
+  }
+  .cart-count{
+    position:absolute; top:-9px; right:-11px;
+    background:var(--gold); color:var(--ink);
+    font-size:0.62rem; font-weight:700;
+    width:17px; height:17px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; }
+  .burger span{ width:22px; height:1px; background:var(--ivory); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    background:var(--ink);
+    color:var(--ivory);
+    min-height:100vh;
+    display:flex; align-items:stretch;
+    padding-top:90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    z-index:0;
+  }
+  .hero-bg img{
+    width:100%; height:100%;
+    object-fit:cover;
+    object-position:center 30%;
+    filter:saturate(1.02) contrast(1.03);
+  }
+  .hero-bg::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(100deg, rgba(12,11,10,0.92) 0%, rgba(12,11,10,0.78) 32%, rgba(12,11,10,0.45) 58%, rgba(12,11,10,0.35) 100%),
+               linear-gradient(0deg, rgba(12,11,10,0.55) 0%, transparent 30%);
+  }
+  .hero .wrap{
+    max-width:1280px;
+    display:grid; grid-template-columns:1fr;
+    gap:40px; align-items:center;
+    width:100%;
+    position:relative;
+    z-index:1;
+  }
+  .hero-copy .eyebrow{ margin-bottom:26px; }
+  .hero-copy h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.6rem);
+    font-weight:400;
+    margin-bottom:26px;
+  }
+  .hero-copy h1 em{ font-style:italic; color:var(--gold-bright); font-weight:500; }
+  .hero-copy p{
+    color:rgba(246,241,231,0.68);
+    max-width:440px;
+    font-size:1.02rem;
+    margin-bottom:38px;
+  }
+  .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:56px; }
+  .hero-strip{
+    display:flex; gap:36px; flex-wrap:wrap;
+    border-top:1px solid var(--line); padding-top:22px;
+  }
+  .hero-strip div{ font-size:0.72rem; letter-spacing:0.06em; color:rgba(246,241,231,0.55); text-transform:uppercase; }
+  .hero-strip strong{ display:block; font-family:'Fraunces',serif; font-size:1.4rem; color:var(--gold-bright); font-weight:500; letter-spacing:0; text-transform:none; }
+
+  .gem-facet-hi{
+    animation:gemshine 7s ease-in-out infinite;
+    transform-origin:center;
+  }
+  @keyframes gemshine{
+    0%,100%{ opacity:0.15; }
+    50%{ opacity:0.55; }
+  }
+  .gem-ring{
+    animation:rotategem 42s linear infinite;
+    transform-origin:200px 200px;
+  }
+  @keyframes rotategem{ to{ transform:rotate(360deg); } }
+
+  /* ---------- Marquee ---------- */
+  .marquee-band{
+    background:var(--gold);
+    color:var(--ink);
+    overflow:hidden;
+    padding:14px 0;
+    white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex;
+    animation:scrollmq 32s linear infinite;
+    font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;
+  }
+  .marquee-track span{ padding:0 26px; }
+  @keyframes scrollmq{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+  /* ---------- Section generic ---------- */
+  .section{ padding:120px 0; }
+  .section-head{ max-width:640px; margin-bottom:60px; }
+  .section-head h2{ font-size:clamp(2rem,3.6vw,2.9rem); margin-top:16px; font-weight:400; }
+  .section-head p{ color:var(--smoke); margin-top:18px; font-size:1.02rem; max-width:520px; }
+  .on-dark{ background:var(--ink); color:var(--ivory); }
+  .on-dark .section-head p{ color:rgba(246,241,231,0.62); }
+  .on-dark .eyebrow{ color:var(--gold-bright); }
+  .on-dark .eyebrow::before{ background:var(--gold-bright); }
+
+  /* reveal */
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- About ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px; align-items:center;
+  }
+  .about-art{
+    aspect-ratio:4/5;
+    background:var(--ink-2);
+    clip-path:var(--facet);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .about-art svg{ width:72%; }
+  .about-art img{ width:100%; height:100%; object-fit:cover; object-position:center 28%; filter:saturate(1.03) contrast(1.02); }
+  .about-art::after{
+    content:'';
+    position:absolute; inset:0;
+    box-shadow:inset 0 0 0 1px rgba(217,185,138,0.25);
+    pointer-events:none;
+  }
+  .about-copy p{ color:var(--charcoal); margin-bottom:18px; max-width:520px; }
+  .about-copy p.lead{ font-family:'Fraunces',serif; font-size:1.3rem; font-weight:400; color:var(--charcoal); }
+  .stat-row{ display:flex; gap:0; margin-top:38px; border-top:1px solid var(--line); }
+  .stat{ flex:1; padding:22px 22px 0 0; border-right:1px solid var(--line); }
+  .stat:last-child{ border-right:none; }
+  .stat strong{ display:block; font-family:'Fraunces',serif; font-size:2rem; color:var(--burgundy); font-weight:500; }
+  .stat span{ font-size:0.72rem; letter-spacing:0.05em; text-transform:uppercase; color:var(--smoke); }
+
+  /* ---------- Shop ---------- */
+  .shop-tabs{ display:flex; gap:10px; flex-wrap:wrap; margin-bottom:48px; }
+  .tab{
+    padding:11px 22px; font-size:0.75rem; letter-spacing:0.08em; text-transform:uppercase;
+    border:1px solid rgba(246,241,231,0.25); color:rgba(246,241,231,0.7);
+    cursor:pointer; background:transparent; clip-path:var(--facet-sm);
+    transition:all .3s;
+  }
+  .tab:hover{ border-color:var(--gold-bright); color:var(--ivory); }
+  .tab.active{ background:var(--gold); border-color:var(--gold); color:var(--ink); font-weight:600; }
+
+  .product-grid{
+    display:grid; grid-template-columns:repeat(auto-fill, minmax(255px,1fr)); gap:26px;
+  }
+  .p-card{
+    background:var(--ink-2);
+    clip-path:var(--facet);
+    border:1px solid rgba(176,141,87,0.15);
+    overflow:hidden;
+    transition:transform .4s ease, border-color .4s;
+  }
+  .p-card:hover{ transform:translateY(-6px); border-color:var(--gold); }
+  .p-media{
+    aspect-ratio:1/1; background:radial-gradient(circle at 30% 20%, rgba(176,141,87,0.22), transparent 60%), #0f0d0c;
+    display:flex; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .p-media svg{ width:46%; transition:transform .6s ease; }
+  .p-card:hover .p-media svg{ transform:scale(1.08) rotate(3deg); }
+  .p-sweep{
+    position:absolute; inset:0;
+    background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.14) 50%, transparent 60%);
+    transform:translateX(-120%);
+    transition:transform .9s ease;
+  }
+  .p-card:hover .p-sweep{ transform:translateX(120%); }
+  .p-tag{
+    position:absolute; top:14px; left:14px;
+    font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase;
+    background:var(--burgundy); color:var(--ivory); padding:5px 10px;
+  }
+  .p-body{ padding:20px 22px 24px; }
+  .p-cat{ font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold-bright); margin-bottom:6px; }
+  .p-name{ font-family:'Fraunces',serif; font-size:1.12rem; color:var(--ivory); margin-bottom:10px; font-weight:400; }
+  .p-foot{ display:flex; align-items:center; justify-content:space-between; }
+  .p-price{ color:var(--ivory); font-weight:500; }
+  .add-btn{
+    width:38px; height:38px; border-radius:50%; border:1px solid rgba(246,241,231,0.3);
+    background:transparent; color:var(--ivory); cursor:pointer; font-size:1.1rem;
+    display:flex; align-items:center; justify-content:center;
+    transition:all .3s;
+  }
+  .add-btn:hover{ background:var(--gold); border-color:var(--gold); color:var(--ink); transform:rotate(90deg); }
+
+  /* ---------- Services ---------- */
+  .service-grid{ display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .service-item{ background:var(--ivory); padding:34px 30px; display:flex; flex-direction:column; gap:14px; }
+  .service-item svg{ width:30px; height:30px; color:var(--gold); }
+  .service-item h3{ font-size:1.02rem; font-weight:500; }
+  .service-item p{ font-size:0.88rem; color:var(--smoke); }
+  .ankauf-card{
+    margin-top:1px; grid-column:1/-1;
+    background:var(--burgundy); color:var(--ivory);
+    padding:44px; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap;
+  }
+  .ankauf-card h3{ font-family:'Fraunces',serif; font-weight:400; font-size:1.5rem; margin-bottom:8px; }
+  .ankauf-card p{ color:rgba(246,241,231,0.78); max-width:480px; }
+
+  /* ---------- Bridal ---------- */
+  .bridal{ background:var(--ink); color:var(--ivory); }
+  .bridal-grid{ display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; }
+  .bridal-art{ aspect-ratio:5/6; clip-path:var(--facet); background:linear-gradient(160deg, var(--ink-2), #1e1712); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; }
+  .bridal-art svg{ width:55%; }
+  .bridal-art img{ width:100%; height:100%; object-fit:cover; object-position:center 40%; filter:saturate(1.03) contrast(1.02); }
+  .bridal-art::after{
+    content:'';
+    position:absolute; inset:0;
+    box-shadow:inset 0 0 0 1px rgba(217,185,138,0.25);
+    pointer-events:none;
+  }
+  .bridal-copy p{ color:rgba(246,241,231,0.68); max-width:480px; margin-bottom:30px; }
+
+  /* ---------- Location ---------- */
+  .location-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:60px; }
+  .info-block{ margin-bottom:30px; }
+  .info-block h3{ font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:12px; font-weight:600; }
+  table.hours{ width:100%; border-collapse:collapse; font-size:0.92rem; }
+  table.hours td{ padding:8px 0; border-bottom:1px solid var(--line); }
+  table.hours td:last-child{ text-align:right; color:var(--smoke); }
+  .map-frame{ clip-path:var(--facet); overflow:hidden; border:1px solid var(--line); min-height:420px; }
+  .map-frame iframe{ width:100%; height:100%; min-height:420px; border:0; filter:grayscale(0.3) contrast(1.05); }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--ink); color:rgba(246,241,231,0.55); padding:70px 0 30px; position:relative; }
+  footer::before{
+    content:'';
+    display:block; height:14px; margin-bottom:60px;
+    background:linear-gradient(115deg, transparent 49%, var(--gold) 49%, var(--gold) 51%, transparent 51%),
+               linear-gradient(-115deg, transparent 49%, var(--gold) 49%, var(--gold) 51%, transparent 51%);
+    background-size:44px 100%; background-repeat:repeat-x; opacity:0.5;
+  }
+  .footer-grid{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; margin-bottom:50px; }
+  .footer-grid h4{ color:var(--ivory); font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:18px; }
+  .footer-grid a{ display:block; font-size:0.88rem; margin-bottom:10px; color:rgba(246,241,231,0.55); }
+  .footer-grid a:hover{ color:var(--gold-bright); }
+  .footer-bottom{ border-top:1px solid var(--line); padding-top:26px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:0.78rem; }
+
+  /* ---------- Cart Drawer ---------- */
+  .overlay{
+    position:fixed; inset:0; background:rgba(12,11,10,0.5); backdrop-filter:blur(2px);
+    opacity:0; pointer-events:none; transition:opacity .4s; z-index:200;
+  }
+  .overlay.show{ opacity:1; pointer-events:auto; }
+  .drawer{
+    position:fixed; top:0; right:0; height:100%; width:min(420px,92vw);
+    background:var(--ivory); z-index:201;
+    transform:translateX(100%); transition:transform .45s cubic-bezier(.2,.8,.2,1);
+    display:flex; flex-direction:column;
+  }
+  .drawer.show{ transform:translateX(0); }
+  .drawer-head{ padding:26px 28px; border-bottom:1px solid rgba(176,141,87,0.3); display:flex; justify-content:space-between; align-items:center; }
+  .drawer-head h3{ font-weight:400; }
+  .drawer-close{ background:none; border:none; font-size:1.3rem; cursor:pointer; color:var(--charcoal); }
+  .drawer-items{ flex:1; overflow-y:auto; padding:20px 28px; }
+  .drawer-empty{ color:var(--smoke); font-size:0.92rem; padding:40px 0; text-align:center; }
+  .d-item{ display:flex; gap:14px; padding:16px 0; border-bottom:1px solid rgba(176,141,87,0.18); align-items:center; }
+  .d-media{ width:56px; height:56px; background:var(--ink-2); flex:none; clip-path:var(--facet-sm); display:flex; align-items:center; justify-content:center; }
+  .d-media svg{ width:60%; }
+  .d-info{ flex:1; }
+  .d-info .name{ font-size:0.9rem; font-weight:500; }
+  .d-info .cat{ font-size:0.7rem; color:var(--smoke); text-transform:uppercase; letter-spacing:0.05em; }
+  .d-qty{ display:flex; align-items:center; gap:8px; margin-top:6px; }
+  .d-qty button{ width:22px; height:22px; border:1px solid rgba(176,141,87,0.4); background:none; cursor:pointer; font-size:0.8rem; }
+  .d-price{ font-weight:500; white-space:nowrap; }
+  .d-remove{ background:none; border:none; color:var(--burgundy); font-size:0.72rem; text-decoration:underline; cursor:pointer; margin-top:6px; }
+  .drawer-foot{ padding:24px 28px 30px; border-top:1px solid rgba(176,141,87,0.3); }
+  .subtotal-row{ display:flex; justify-content:space-between; margin-bottom:16px; font-size:0.95rem; }
+  .subtotal-row strong{ font-family:'Fraunces',serif; font-size:1.2rem; }
+  .cart-note{ font-size:0.72rem; color:var(--smoke); margin-top:10px; text-align:center; }
+
+  /* ---------- Checkout modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(12,11,10,0.65); z-index:210;
+    display:none; align-items:center; justify-content:center; padding:20px;
+  }
+  .modal-overlay.show{ display:flex; }
+  .modal{
+    background:var(--ivory); width:min(460px,100%); padding:40px; clip-path:var(--facet); position:relative;
+  }
+  .modal .eyebrow{ margin-bottom:14px; }
+  .modal h3{ font-size:1.6rem; margin-bottom:10px; font-weight:400; }
+  .modal p.desc{ color:var(--smoke); font-size:0.9rem; margin-bottom:26px; }
+  .field{ margin-bottom:16px; }
+  .field label{ display:block; font-size:0.72rem; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:6px; color:var(--smoke); }
+  .field input{ width:100%; padding:12px 14px; border:1px solid rgba(176,141,87,0.4); background:transparent; font-family:inherit; font-size:0.92rem; }
+  .field input:focus{ outline:2px solid var(--gold); outline-offset:1px; }
+  .modal-close{ position:absolute; top:18px; right:20px; background:none; border:none; font-size:1.2rem; cursor:pointer; }
+  .modal-success{ text-align:center; padding:10px 0; }
+  .modal-success svg{ width:52px; margin:0 auto 18px; color:var(--gold); }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .about-grid, .bridal-grid, .location-grid{ grid-template-columns:1fr; gap:44px; }
+    .service-grid{ grid-template-columns:1fr 1fr; }
+    .hero .wrap{ grid-template-columns:1fr; text-align:left; }
+    .hero-bg::after{
+      background:linear-gradient(180deg, rgba(12,11,10,0.55) 0%, rgba(12,11,10,0.62) 45%, rgba(12,11,10,0.88) 100%);
+    }
+  }
+  @media (max-width:760px){
+    nav.primary-nav{ display:none; }
+    .burger{ display:flex; }
+    .service-grid{ grid-template-columns:1fr; }
+    .footer-grid{ grid-template-columns:1fr 1fr; }
+    .stat-row{ flex-wrap:wrap; }
+    .stat{ flex:1 1 45%; border-right:none; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:16px;}
+    .ankauf-card{ flex-direction:column; align-items:flex-start; }
+  }
+  @media (max-width:560px){
+    .footer-grid{ grid-template-columns:1fr; }
+    .section{ padding:80px 0; }
+  }
+
+  /* mobile nav panel */
+  .mobile-nav{
+    position:fixed; inset:0; background:var(--ink); z-index:150;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:28px;
+    transform:translateY(-100%); transition:transform .4s ease;
+  }
+  .mobile-nav.show{ transform:translateY(0); }
+  .mobile-nav a{ color:var(--ivory); font-family:'Fraunces',serif; font-size:1.6rem; }
+  .mobile-nav .modal-close{ color:var(--ivory); top:26px; right:26px; }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#top" class="logo"><span class="mark">◆</span> W R Tillmann</a>
+    <nav class="primary-nav">
+      <a href="#ueber-uns">Über uns</a>
+      <a href="#kollektion">Kollektion</a>
+      <a href="#service">Service</a>
+      <a href="#brautmode">Brautmode</a>
+      <a href="#kontakt">Filiale &amp; Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <button class="cart-btn" onclick="openCart()" aria-label="Warenkorb öffnen">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 4h2l2.4 12.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L21 8H6"/><circle cx="10" cy="21" r="1"/><circle cx="17" cy="21" r="1"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <a href="#kontakt" class="btn btn-line" style="display:none">Termin</a>
+      <button class="burger" onclick="toggleMobileNav(true)" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="modal-close" onclick="toggleMobileNav(false)">✕</button>
+  <a href="#ueber-uns" onclick="toggleMobileNav(false)">Über uns</a>
+  <a href="#kollektion" onclick="toggleMobileNav(false)">Kollektion</a>
+  <a href="#service" onclick="toggleMobileNav(false)">Service</a>
+  <a href="#brautmode" onclick="toggleMobileNav(false)">Brautmode</a>
+  <a href="#kontakt" onclick="toggleMobileNav(false)">Filiale &amp; Kontakt</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="hero.jpg" alt="">
+  </div>
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">Familienunternehmen seit über 45 Jahren</div>
+      <h1>Schmuck und Uhren,<br><em>von Hand geprüft</em>,<br>ein Leben lang getragen.</h1>
+      <p>In unserem Fachgeschäft in Mömbris führen wir Schmuck, Uhren und Mode in umfangreicher Auswahl – dazu eigene Werkstatt, Meisterhandwerk und persönliche Beratung für den Raum Aschaffenburg.</p>
+      <div class="hero-actions">
+        <a href="#kollektion" class="btn btn-gold">Kollektion entdecken</a>
+        <a href="#kontakt" class="btn btn-line">Termin vereinbaren</a>
+      </div>
+      <div class="hero-strip">
+        <div><strong>45+</strong>Jahre Erfahrung</div>
+        <div><strong>3</strong>Filialen im Raum Aschaffenburg</div>
+        <div><strong>100%</strong>eigene Werkstatt</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-band">
+  <div class="marquee-track">
+    <span>Meisterhandwerk</span><span>◆</span><span>Eigene Werkstatt</span><span>◆</span><span>Zertifizierte Echtheit</span><span>◆</span><span>Trauringe &amp; Brautmode</span><span>◆</span><span>Ankauf von Altgold</span><span>◆</span>
+    <span>Meisterhandwerk</span><span>◆</span><span>Eigene Werkstatt</span><span>◆</span><span>Zertifizierte Echtheit</span><span>◆</span><span>Trauringe &amp; Brautmode</span><span>◆</span><span>Ankauf von Altgold</span><span>◆</span>
+  </div>
+</div>
+
+<!-- ============ ÜBER UNS ============ -->
+<section class="section" id="ueber-uns">
+  <div class="wrap about-grid">
+    <div class="about-art reveal">
+      <img src="team.jpg" alt="Zwei Mitarbeiterinnen von W R Tillmann präsentieren Trauringe im Geschäft">
+    </div>
+    <div class="about-copy reveal">
+      <div class="eyebrow">Über uns</div>
+      <h2>Kleine und große Träume, seit 1979 in Handarbeit erfüllt.</h2>
+      <p class="lead" style="margin-top:22px;">Als Familienunternehmen ist es unser Anspruch, mit jedem Stück ein Versprechen einzulösen.</p>
+      <p>Mit gewachsenen Verbindungen zu Herstellern aus aller Welt sind wir seit über 45 Jahren in der Schmuck- und Uhrenbranche tätig. Regelmäßige Qualitätskontrollen sorgen für den hohen Standard, den unsere Kundschaft aus dem gesamten Raum Aschaffenburg erwartet.</p>
+      <p>Überzeugen Sie sich in unserem Geschäft in Mömbris von unserer umfangreichen Auswahl an Schmuck, Uhren und Mode – in ungezwungener Atmosphäre und bei kompetenter, persönlicher Beratung.</p>
+      <div class="stat-row">
+        <div class="stat"><strong>45+</strong><span>Jahre am Markt</span></div>
+        <div class="stat"><strong>1</strong><span>Familie, eine Werkstatt</span></div>
+        <div class="stat"><strong>12</strong><span>Serviceleistungen vor Ort</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHOP ============ -->
+<section class="section on-dark" id="kollektion">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Kollektion</div>
+      <h2>Ausgewählte Stücke aus unserem Geschäft.</h2>
+      <p>Eine kleine Auswahl unseres Sortiments – von Verlobungsringen bis zur Automatikuhr. Vollständiger Bestand und Sonderanfertigungen direkt im Geschäft in Mömbris.</p>
+    </div>
+
+    <div class="shop-tabs" id="shopTabs">
+      <button class="tab active" data-cat="Alle">Alle</button>
+      <button class="tab" data-cat="Ringe">Ringe</button>
+      <button class="tab" data-cat="Uhren">Uhren</button>
+      <button class="tab" data-cat="Schmuck">Schmuck</button>
+      <button class="tab" data-cat="Brautmode">Brautmode</button>
+    </div>
+
+    <div class="product-grid reveal" id="productGrid"></div>
+  </div>
+</section>
+
+<!-- ============ SERVICE ============ -->
+<section class="section" id="service">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Service</div>
+      <h2>Was unsere Werkstatt für Sie übernimmt.</h2>
+      <p>Von der ersten Anprobe bis zur letzten Politur – alle Leistungen aus einer Hand, in unserem eigenen Atelier in Mömbris.</p>
+    </div>
+    <div class="reveal">
+    <div class="service-grid">
+      <div class="service-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 2l2.6 6.2L21 9l-5 4.4L17.5 20 12 16.5 6.5 20 8 13.4 3 9l6.4-.8z"/></svg>
+        <h3>Anfertigung &amp; Umarbeitung</h3>
+        <p>Individuelle Schmuckstücke nach Ihren Wünschen, in eigener Werkstatt gefertigt.</p>
+      </div>
+      <div class="service-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>
+        <h3>Schmuckreparaturen</h3>
+        <p>Weitenänderungen bei Ringen, Reparaturen und Auffrischungen für jedes Stück.</p>
+      </div>
+      <div class="service-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+        <h3>Perlenketten reinigen &amp; knoten</h3>
+        <p>Fachgerechte Pflege und Neuknüpfung Ihrer Perlenschmuckstücke.</p>
+      </div>
+      <div class="service-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 4h16v16H4z"/><path d="M4 10h16M10 4v16"/></svg>
+        <h3>Hand- &amp; Maschinengravuren</h3>
+        <p>Persönliche Widmungen und Gravuren für einen bleibenden Moment.</p>
+      </div>
+      <div class="service-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <h3>Uhrreparatur &amp; Überholung</h3>
+        <p>Batteriewechsel, Wasserdichtigkeits- und Genauigkeitstests, Bandservice.</p>
+      </div>
+      <div class="service-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M20 12v7a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-7"/><path d="M3 8h18v4H3zM12 8V4M9 4h6"/></svg>
+        <h3>Geschenkgutscheine &amp; Verpackung</h3>
+        <p>Echtheitszertifikate und ein liebevoller Verpackungsservice inklusive.</p>
+      </div>
+    </div>
+    <div class="ankauf-card">
+      <div>
+        <h3>Ankauf von Altgold &amp; Erbschmuck</h3>
+        <p>Wir kaufen Altgold, Zahngold, Erbschmuck, Münzen, Barren, Besteck und Silber – faire Bewertung direkt im Geschäft.</p>
+      </div>
+      <a href="#kontakt" class="btn btn-line">Bewertung anfragen</a>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRAUTMODE ============ -->
+<section class="section bridal" id="brautmode">
+  <div class="wrap bridal-grid">
+    <div class="bridal-copy reveal">
+      <div class="eyebrow">Hochzeit &amp; Trauung</div>
+      <h2>Der richtige Ring für den einen besonderen Anlass.</h2>
+      <p>Für Ihre Hochzeit und Trauung bieten wir eine große Auswahl an Trauringen sowie Braut-, Abend- und Cocktailkleidern samt passenden Accessoires – in einem persönlichen Beratungstermin ganz auf Sie abgestimmt.</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="#kollektion" class="btn btn-gold">Trauringe ansehen</a>
+        <a href="#kontakt" class="btn btn-line">Beratungstermin</a>
+      </div>
+    </div>
+    <div class="bridal-art reveal">
+      <img src="rings.jpg" alt="Zwei goldene Trauringe, einer mit Diamantbesatz, auf edlem Stoff">
+    </div>
+  </div>
+</section>
+
+<!-- ============ KONTAKT / STANDORT ============ -->
+<section class="section" id="kontakt">
+  <div class="wrap location-grid">
+    <div class="reveal">
+      <div class="eyebrow">Filiale &amp; Kontakt</div>
+      <h2 style="margin:16px 0 34px;">Besuchen Sie uns in Mömbris.</h2>
+      <div class="info-block">
+        <h3>Anschrift</h3>
+        <p>Filiale Mömbris<br>Schimborner Str. 3<br>63776 Mömbris</p>
+      </div>
+      <div class="info-block">
+        <h3>Kontakt</h3>
+        <p><a href="tel:+49602999632" style="color:var(--charcoal); text-decoration:underline;">Tel.: 06029 - 996329</a></p>
+      </div>
+      <div class="info-block">
+        <h3>Öffnungszeiten</h3>
+        <table class="hours">
+          <tr><td>Montag – Freitag</td><td>10 – 18 Uhr</td></tr>
+          <tr><td>Samstag</td><td>10 – 13 Uhr</td></tr>
+        </table>
+      </div>
+      <a href="#" class="btn btn-burg" style="margin-top:10px;">Jetzt anfragen</a>
+    </div>
+    <div class="map-frame reveal">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d10243.938817014692!2d9.166601!3d50.0678481!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5db24c06fcf630cc!2sTillmann+W.+R.+Juweliergesch%C3%A4ft!5e0!3m2!1sde!2sde!4v1456865263434" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Standort WR Tillmann Mömbris"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo" style="margin-bottom:14px; display:inline-flex;"><span class="mark">◆</span> W R Tillmann</a>
+        <p style="font-size:0.85rem; max-width:280px; margin-top:14px;">Schmuck, Uhren und Mode in Mömbris – seit über 45 Jahren als Familienunternehmen für den Raum Aschaffenburg.</p>
+      </div>
+      <div>
+        <h4>Navigation</h4>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#kollektion">Kollektion</a>
+        <a href="#service">Service</a>
+        <a href="#brautmode">Brautmode</a>
+      </div>
+      <div>
+        <h4>Filiale</h4>
+        <a href="#kontakt">Schimborner Str. 3, Mömbris</a>
+        <a href="tel:+49602999632">06029 - 996329</a>
+      </div>
+      <div>
+        <h4>Rechtliches</h4>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 W R Tillmann · Alle Rechte vorbehalten</span>
+      <span>Demo-Website mit Shop-Funktion</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
+<aside class="drawer" id="drawer" aria-label="Warenkorb">
+  <div class="drawer-head">
+    <h3>Warenkorb</h3>
+    <button class="drawer-close" onclick="closeAllPanels()" aria-label="Schließen">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems"></div>
+  <div class="drawer-foot">
+    <div class="subtotal-row"><span>Zwischensumme</span><strong id="subtotalVal">0 €</strong></div>
+    <button class="btn btn-gold btn-full" onclick="openCheckout()">Zur Kasse</button>
+    <p class="cart-note">Versandkostenfrei · Abholung in der Filiale Mömbris möglich</p>
+  </div>
+</aside>
+
+<!-- ============ CHECKOUT MODAL ============ -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeCheckout()">✕</button>
+    <div id="checkoutForm">
+      <div class="eyebrow">Kasse</div>
+      <h3>Bestellung abschließen</h3>
+      <p class="desc">Diese Demo-Seite versendet keine echte Bestellung – im Live-Betrieb würde hier die Zahlung erfolgen.</p>
+      <div class="field"><label>Name</label><input type="text" placeholder="Vor- und Nachname"></div>
+      <div class="field"><label>E-Mail</label><input type="email" placeholder="ihre@email.de"></div>
+      <div class="field"><label>Abholung oder Versand</label><input type="text" placeholder="Filiale Mömbris / Versandadresse"></div>
+      <button class="btn btn-gold btn-full" onclick="submitCheckout()">Anfrage senden</button>
+    </div>
+    <div id="checkoutSuccess" class="modal-success" style="display:none;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M20 6L9 17l-5-5"/></svg>
+      <h3>Vielen Dank!</h3>
+      <p class="desc">Ihre Anfrage ist eingegangen. Wir melden uns zeitnah bei Ihnen.</p>
+      <button class="btn btn-line dark btn-full" onclick="closeCheckout()">Schließen</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ---------- Product data ---------- */
+const gemSVG = `<svg viewBox="0 0 100 100" fill="none"><polygon points="50,15 82,42 70,88 30,88 18,42" stroke="#d9b98a" stroke-width="1.4"/><polygon points="50,15 82,42 50,50" fill="rgba(217,185,138,0.15)" stroke="#d9b98a" stroke-width="0.8"/><polygon points="50,15 18,42 50,50" fill="rgba(217,185,138,0.08)" stroke="#d9b98a" stroke-width="0.8"/></svg>`;
+const ringSVG = `<svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="58" r="30" stroke="#d9b98a" stroke-width="2.4"/><polygon points="50,14 60,28 50,34 40,28" fill="#d9b98a"/></svg>`;
+const watchSVG = `<svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="26" stroke="#d9b98a" stroke-width="2.2"/><path d="M50 34v16l10 8" stroke="#d9b98a" stroke-width="2"/><rect x="42" y="8" width="16" height="16" stroke="#d9b98a" stroke-width="1.6"/><rect x="42" y="76" width="16" height="16" stroke="#d9b98a" stroke-width="1.6"/></svg>`;
+const pearlSVG = `<svg viewBox="0 0 100 100" fill="none"><path d="M20 30 Q50 15 80 30" stroke="#d9b98a" stroke-width="1.6" fill="none"/><circle cx="24" cy="34" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="40" cy="46" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="60" cy="46" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="76" cy="34" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="50" cy="55" r="6" fill="#d9b98a"/></svg>`;
+const braceletSVG = `<svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="55" rx="32" ry="14" stroke="#d9b98a" stroke-width="2"/><circle cx="50" cy="41" r="5" fill="#d9b98a"/></svg>`;
+const dressSVG = `<svg viewBox="0 0 100 100" fill="none"><path d="M40 20h20l6 12-6 8h-20l-6-8z" stroke="#d9b98a" stroke-width="1.6"/><path d="M40 40 L20 90 M60 40 L80 90 M20 90 Q50 100 80 90" stroke="#d9b98a" stroke-width="1.6"/></svg>`;
+
+const products = [
+  {id:1, name:"Solitär-Verlobungsring, 750 Gold", cat:"Ringe", price:1290, svg:ringSVG, tag:"Meisterstück"},
+  {id:2, name:"Trauring-Paar, Weißgold matt", cat:"Ringe", price:980, svg:ringSVG},
+  {id:3, name:"Damenring, 585 Gold mit Brillant", cat:"Ringe", price:640, svg:ringSVG},
+  {id:4, name:"Automatik-Herrenuhr, Edelstahl", cat:"Uhren", price:1450, svg:watchSVG, tag:"Neu"},
+  {id:5, name:"Damenuhr, Perlmutt-Zifferblatt", cat:"Uhren", price:820, svg:watchSVG},
+  {id:6, name:"Chronograph, Saphirglas", cat:"Uhren", price:1690, svg:watchSVG},
+  {id:7, name:"Perlenkette, Süßwasserzucht", cat:"Schmuck", price:390, svg:pearlSVG},
+  {id:8, name:"Brillant-Ohrstecker, 750 Gold", cat:"Schmuck", price:560, svg:gemSVG},
+  {id:9, name:"Armband, 585 Gold Anker", cat:"Schmuck", price:720, svg:braceletSVG},
+  {id:10, name:"Trauring-Set „Klassik“", cat:"Brautmode", price:1180, svg:ringSVG, tag:"Beliebt"},
+  {id:11, name:"Brautschmuck-Set, Perlen &amp; Kristall", cat:"Brautmode", price:460, svg:pearlSVG},
+  {id:12, name:"Abendkleid-Accessoire, Broschen-Set", cat:"Brautmode", price:210, svg:dressSVG},
+];
+
+let cart = [];
+let currentFilter = "Alle";
+
+function euro(n){ return n.toLocaleString('de-DE') + " €"; }
+
+function renderProducts(){
+  const grid = document.getElementById('productGrid');
+  const list = currentFilter === "Alle" ? products : products.filter(p=>p.cat===currentFilter);
+  grid.innerHTML = list.map(p => `
+    <div class="p-card">
+      <div class="p-media">
+        ${p.tag ? `<span class="p-tag">${p.tag}</span>` : ''}
+        <div class="p-sweep"></div>
+        ${p.svg}
+      </div>
+      <div class="p-body">
+        <div class="p-cat">${p.cat}</div>
+        <div class="p-name">${p.name}</div>
+        <div class="p-foot">
+          <span class="p-price">${euro(p.price)}</span>
+          <button class="add-btn" onclick="addToCart(${p.id})" aria-label="In den Warenkorb">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+document.getElementById('shopTabs').addEventListener('click', (e)=>{
+  if(!e.target.classList.contains('tab')) return;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  e.target.classList.add('active');
+  currentFilter = e.target.dataset.cat;
+  renderProducts();
+});
+
+function addToCart(id){
+  const existing = cart.find(c=>c.id===id);
+  if(existing){ existing.qty++; }
+  else{
+    const prod = products.find(p=>p.id===id);
+    cart.push({...prod, qty:1});
+  }
+  renderCart();
+  openCart();
+}
+
+function changeQty(id, delta){
+  const item = cart.find(c=>c.id===id);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){ cart = cart.filter(c=>c.id!==id); }
+  renderCart();
+}
+
+function removeItem(id){
+  cart = cart.filter(c=>c.id!==id);
+  renderCart();
+}
+
+function renderCart(){
+  const wrap = document.getElementById('drawerItems');
+  const count = cart.reduce((s,c)=>s+c.qty,0);
+  document.getElementById('cartCount').textContent = count;
+  if(cart.length===0){
+    wrap.innerHTML = `<div class="drawer-empty">Ihr Warenkorb ist noch leer.<br>Entdecken Sie unsere Kollektion.</div>`;
+  } else {
+    wrap.innerHTML = cart.map(item => `
+      <div class="d-item">
+        <div class="d-media">${item.svg}</div>
+        <div class="d-info">
+          <div class="name">${item.name}</div>
+          <div class="cat">${item.cat}</div>
+          <div class="d-qty">
+            <button onclick="changeQty(${item.id},-1)" aria-label="Menge verringern">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty(${item.id},1)" aria-label="Menge erhöhen">+</button>
+          </div>
+          <button class="d-remove" onclick="removeItem(${item.id})">Entfernen</button>
+        </div>
+        <div class="d-price">${euro(item.price * item.qty)}</div>
+      </div>
+    `).join('');
+  }
+  const subtotal = cart.reduce((s,c)=>s + c.price*c.qty, 0);
+  document.getElementById('subtotalVal').textContent = euro(subtotal);
+}
+
+function openCart(){
+  document.getElementById('drawer').classList.add('show');
+  document.getElementById('overlay').classList.add('show');
+}
+function closeAllPanels(){
+  document.getElementById('drawer').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show');
+}
+function openCheckout(){
+  if(cart.length===0) return;
+  document.getElementById('checkoutOverlay').classList.add('show');
+  document.getElementById('checkoutForm').style.display='block';
+  document.getElementById('checkoutSuccess').style.display='none';
+}
+function closeCheckout(){ document.getElementById('checkoutOverlay').classList.remove('show'); }
+function submitCheckout(){
+  document.getElementById('checkoutForm').style.display='none';
+  document.getElementById('checkoutSuccess').style.display='block';
+}
+
+/* header scroll state */
+window.addEventListener('scroll', ()=>{
+  document.getElementById('siteHeader').classList.toggle('solid', window.scrollY > 40);
+});
+
+/* mobile nav */
+function toggleMobileNav(open){
+  document.getElementById('mobileNav').classList.toggle('show', open);
+}
+
+/* scroll reveal */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('in'); });
+}, {threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+renderProducts();
+renderCart();
+</script>
+</body>
+</html>
