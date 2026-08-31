@@ -295,9 +295,6 @@
   }
   .p-media svg{ width:46%; transition:transform .6s ease; }
   .p-card:hover .p-media svg{ transform:scale(1.08) rotate(3deg); }
-  .p-media img{ width:100%; height:100%; object-fit:cover; transition:transform .7s ease; filter:saturate(1.03) contrast(1.02); }
-  .p-card:hover .p-media img{ transform:scale(1.07); }
-  .d-media img{ width:100%; height:100%; object-fit:cover; }
   .p-sweep{
     position:absolute; inset:0;
     background:linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.14) 50%, transparent 60%);
@@ -502,7 +499,7 @@
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
   <div class="hero-bg" aria-hidden="true">
-    <img src="images/hero-haende.jpg" alt="">
+    <img src="hero.jpg" alt="">
   </div>
   <div class="wrap">
     <div class="hero-copy">
@@ -636,7 +633,7 @@
       </div>
     </div>
     <div class="bridal-art reveal">
-      <img src="images/trauringe-beige.jpg" alt="Zwei goldene Trauringe, einer mit Diamantbesatz, auf edlem Stoff">
+      <img src="rings.jpg" alt="Zwei goldene Trauringe, einer mit Diamantbesatz, auf edlem Stoff">
     </div>
   </div>
 </section>
@@ -742,20 +739,26 @@
 
 <script>
 /* ---------- Product data ---------- */
+const gemSVG = `<svg viewBox="0 0 100 100" fill="none"><polygon points="50,15 82,42 70,88 30,88 18,42" stroke="#d9b98a" stroke-width="1.4"/><polygon points="50,15 82,42 50,50" fill="rgba(217,185,138,0.15)" stroke="#d9b98a" stroke-width="0.8"/><polygon points="50,15 18,42 50,50" fill="rgba(217,185,138,0.08)" stroke="#d9b98a" stroke-width="0.8"/></svg>`;
+const ringSVG = `<svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="58" r="30" stroke="#d9b98a" stroke-width="2.4"/><polygon points="50,14 60,28 50,34 40,28" fill="#d9b98a"/></svg>`;
+const watchSVG = `<svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="26" stroke="#d9b98a" stroke-width="2.2"/><path d="M50 34v16l10 8" stroke="#d9b98a" stroke-width="2"/><rect x="42" y="8" width="16" height="16" stroke="#d9b98a" stroke-width="1.6"/><rect x="42" y="76" width="16" height="16" stroke="#d9b98a" stroke-width="1.6"/></svg>`;
+const pearlSVG = `<svg viewBox="0 0 100 100" fill="none"><path d="M20 30 Q50 15 80 30" stroke="#d9b98a" stroke-width="1.6" fill="none"/><circle cx="24" cy="34" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="40" cy="46" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="60" cy="46" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="76" cy="34" r="5" stroke="#d9b98a" stroke-width="1.2"/><circle cx="50" cy="55" r="6" fill="#d9b98a"/></svg>`;
+const braceletSVG = `<svg viewBox="0 0 100 100" fill="none"><ellipse cx="50" cy="55" rx="32" ry="14" stroke="#d9b98a" stroke-width="2"/><circle cx="50" cy="41" r="5" fill="#d9b98a"/></svg>`;
+const dressSVG = `<svg viewBox="0 0 100 100" fill="none"><path d="M40 20h20l6 12-6 8h-20l-6-8z" stroke="#d9b98a" stroke-width="1.6"/><path d="M40 40 L20 90 M60 40 L80 90 M20 90 Q50 100 80 90" stroke="#d9b98a" stroke-width="1.6"/></svg>`;
+
 const products = [
-  {id:1, name:"Solitär-Verlobungsring, 750 Gold", cat:"Ringe", price:1290, img:"images/solitaerring.jpg", tag:"Meisterstück"},
-  {id:2, name:"Trauring-Paar, Gold matt gebürstet", cat:"Ringe", price:980, img:"images/trauringe-beige.jpg"},
-  {id:3, name:"Diamant-Eternity-Armband", cat:"Schmuck", price:1540, img:"images/eternity-armband.jpg", tag:"Neu"},
-  {id:4, name:"Herrenuhr Tillmann, Lederarmband", cat:"Uhren", price:1450, img:"images/herrenuhr.jpg", tag:"Bestseller"},
-  {id:5, name:"Damenuhr Tillmann, Perlmutt-Zifferblatt", cat:"Uhren", price:890, img:"images/damenuhr.jpg"},
-  {id:6, name:"Perlenkette, Süßwasserzucht", cat:"Schmuck", price:390, img:"images/perlenkette.jpg"},
-  {id:7, name:"Brillant-Ohrstecker, 750 Gold", cat:"Schmuck", price:560, img:"images/brillant-ohrstecker.jpg"},
-  {id:8, name:"Creolen mit Brillant-Pavé, 750 Gold", cat:"Schmuck", price:680, img:"images/creolen-brillant.jpg"},
-  {id:9, name:"Armband mit Medaillon-Anhänger", cat:"Schmuck", price:420, img:"images/armband-medaillon.jpg"},
-  {id:10, name:"Trauring-Set „Klassik“", cat:"Brautmode", price:1180, img:"images/trauring-set-slate.jpg", tag:"Beliebt"},
-  {id:11, name:"Diamant-Diadem", cat:"Brautmode", price:2450, img:"images/diadem.jpg", tag:"Exklusiv"},
-  {id:12, name:"Brautaccessoires-Set, Tasche &amp; Schuhe", cat:"Brautmode", price:340, img:"images/brautaccessoires.jpg"},
-  {id:13, name:"Schmuckset „Tillmann Luxury“ im Etui", cat:"Brautmode", price:790, img:"images/schmuckset-luxury.jpg", tag:"Geschenkidee"},
+  {id:1, name:"Solitär-Verlobungsring, 750 Gold", cat:"Ringe", price:1290, svg:ringSVG, tag:"Meisterstück"},
+  {id:2, name:"Trauring-Paar, Weißgold matt", cat:"Ringe", price:980, svg:ringSVG},
+  {id:3, name:"Damenring, 585 Gold mit Brillant", cat:"Ringe", price:640, svg:ringSVG},
+  {id:4, name:"Automatik-Herrenuhr, Edelstahl", cat:"Uhren", price:1450, svg:watchSVG, tag:"Neu"},
+  {id:5, name:"Damenuhr, Perlmutt-Zifferblatt", cat:"Uhren", price:820, svg:watchSVG},
+  {id:6, name:"Chronograph, Saphirglas", cat:"Uhren", price:1690, svg:watchSVG},
+  {id:7, name:"Perlenkette, Süßwasserzucht", cat:"Schmuck", price:390, svg:pearlSVG},
+  {id:8, name:"Brillant-Ohrstecker, 750 Gold", cat:"Schmuck", price:560, svg:gemSVG},
+  {id:9, name:"Armband, 585 Gold Anker", cat:"Schmuck", price:720, svg:braceletSVG},
+  {id:10, name:"Trauring-Set „Klassik“", cat:"Brautmode", price:1180, svg:ringSVG, tag:"Beliebt"},
+  {id:11, name:"Brautschmuck-Set, Perlen &amp; Kristall", cat:"Brautmode", price:460, svg:pearlSVG},
+  {id:12, name:"Abendkleid-Accessoire, Broschen-Set", cat:"Brautmode", price:210, svg:dressSVG},
 ];
 
 let cart = [];
@@ -771,7 +774,7 @@ function renderProducts(){
       <div class="p-media">
         ${p.tag ? `<span class="p-tag">${p.tag}</span>` : ''}
         <div class="p-sweep"></div>
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.svg}
       </div>
       <div class="p-body">
         <div class="p-cat">${p.cat}</div>
@@ -826,7 +829,7 @@ function renderCart(){
   } else {
     wrap.innerHTML = cart.map(item => `
       <div class="d-item">
-        <div class="d-media"><img src="${item.img}" alt=""></div>
+        <div class="d-media">${item.svg}</div>
         <div class="d-info">
           <div class="name">${item.name}</div>
           <div class="cat">${item.cat}</div>
